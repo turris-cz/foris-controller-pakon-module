@@ -1,0 +1,10 @@
+{
+    "user": "stepan",
+    "access": {
+        "foris-controller-pakon": {
+            "methods": [ "perform_query" ]
+        }
+    },
+    "publish": [ "foris-controller-pakon" ],
+    "subscribe": [ "foris-controller-pakon" ]
+}

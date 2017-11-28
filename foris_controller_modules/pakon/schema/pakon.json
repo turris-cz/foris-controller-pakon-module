@@ -1,0 +1,40 @@
+{
+    "oneOf": [
+        {
+            "description": "Request to perform a pakon query",
+            "properties": {
+                "module": {"enum": ["pakon"]},
+                "kind": {"enum": ["request"]},
+                "action": {"enum": ["perform_query"]},
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "query_data": {"type": "string"}
+                    },
+                    "additionalProperties": false,
+                    "required": ["query_data"]
+                }
+            },
+            "additionalProperties": false,
+            "required": ["data"]
+        },
+        {
+            "description": "Relpy to perform a pakon query",
+            "properties": {
+                "module": {"enum": ["pakon"]},
+                "kind": {"enum": ["reply"]},
+                "action": {"enum": ["perform_query"]},
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "response_data": {"type": "string"}
+                    },
+                    "additionalProperties": false,
+                    "required": ["response_data"]
+                }
+            },
+            "additionalProperties": false,
+            "required": ["data"]
+        }
+    ]
+}
