@@ -94,7 +94,7 @@ def mocked_pakon_server():
         pass
 
 
-from .fixtures import backend, infrastructure, ubusd_test
+from foris_controller_testtools.fixtures import backend, infrastructure, ubusd_test
 
 
 def test_perform_query(mocked_pakon_server, infrastructure, ubusd_test):

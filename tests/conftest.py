@@ -1,6 +1,6 @@
 #
 # foris-controller-pakon-module
-# Copyright (C) 2017 CZ.NIC, z.s.p.o. (http://www.nic.cz/)
+# Copyright (C) 2018 CZ.NIC, z.s.p.o. (http://www.nic.cz/)
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,6 +16,33 @@
 # along with this program; if not, write to the Free Software Foundation,
 # Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
 #
+
+import pytest
+import os
+
+# load common fixtures
+from foris_controller_testtools.fixtures import (
+    ubusd_acl_path, uci_config_default_path,
+    controller_modules, extra_module_paths, message_bus, backend
+)
+
+
+@pytest.fixture(scope="session")
+def ubusd_acl_path():
+    return os.path.join(os.path.dirname(os.path.realpath(__file__)), "ubus-acl")
+
+
+@pytest.fixture(scope="session")
+def uci_config_default_path():
+    return os.path.join(
+        os.path.dirname(os.path.realpath(__file__)), "uci_configs"
+    )
+
+
+@pytest.fixture(scope="module")
+def controller_modules():
+    return ["pakon"]
+
 
 def pytest_addoption(parser):
     parser.addoption(
