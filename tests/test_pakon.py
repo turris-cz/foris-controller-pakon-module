@@ -94,11 +94,12 @@ def mocked_pakon_server():
         pass
 
 
-from foris_controller_testtools.fixtures import backend, infrastructure, ubusd_test
+from foris_controller_testtools.fixtures import (
+    backend, infrastructure, ubusd_test, start_buses, mosquitto_test,
+)
 
 
-def test_perform_query(mocked_pakon_server, infrastructure, ubusd_test):
-    notifications = infrastructure.get_notifications()
+def test_perform_query(mocked_pakon_server, infrastructure, start_buses):
     res = infrastructure.process_message({
         "module": "pakon",
         "action": "perform_query",
