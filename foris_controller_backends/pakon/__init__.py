@@ -27,7 +27,7 @@ class PakonException(Exception):
     pass
 
 
-class PakonSocket(object):
+class PakonSocket:
 
     def __init__(self, socket_path):
         self.socket_path = socket_path
@@ -54,7 +54,7 @@ class PakonSocket(object):
             finally:
                 f.close()
             logger.debug("Response recieved (len=%d)" % len(response))
-        except:
+        except Exception:
             raise PakonException("Failed to perform the query '%s'" % data)
 
         return response

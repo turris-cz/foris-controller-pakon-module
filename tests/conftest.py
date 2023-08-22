@@ -27,7 +27,6 @@ from foris_controller_testtools.fixtures import (
 )
 
 
-
 @pytest.fixture(scope="session")
 def uci_config_default_path():
     return os.path.join(

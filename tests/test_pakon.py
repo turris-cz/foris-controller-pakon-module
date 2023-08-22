@@ -25,6 +25,10 @@ import random
 import string
 import sys
 
+from foris_controller_testtools.fixtures import (
+    backend, infrastructure, ubusd_test, start_buses, mosquitto_test,
+)
+
 
 if sys.version_info >= (3, 0):
     from socketserver import BaseRequestHandler, UnixStreamServer, ThreadingMixIn
@@ -79,7 +83,6 @@ def mocked_pakon_server():
         server.shutdown()
         server.server_close()
 
-
     process = multiprocessing.Process(target=start_server, args=(PAKON_QUERY_SOCK, ready, ))
     process.daemon = True
     process.start()
@@ -87,16 +90,10 @@ def mocked_pakon_server():
     ready.wait()
     yield process
 
-
     try:
         os.unlink(PAKON_QUERY_SOCK)
     except OSError:
         pass
-
-
-from foris_controller_testtools.fixtures import (
-    backend, infrastructure, ubusd_test, start_buses, mosquitto_test,
-)
 
 
 def test_perform_query(mocked_pakon_server, infrastructure, start_buses):
