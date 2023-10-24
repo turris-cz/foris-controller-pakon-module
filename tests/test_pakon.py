@@ -25,10 +25,6 @@ import random
 import string
 import sys
 
-from foris_controller_testtools.fixtures import (
-    backend, infrastructure, ubusd_test, start_buses, mosquitto_test,
-)
-
 
 if sys.version_info >= (3, 0):
     from socketserver import BaseRequestHandler, UnixStreamServer, ThreadingMixIn
